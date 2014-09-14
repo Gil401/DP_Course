@@ -7,11 +7,11 @@ namespace FBApp.Patterns
         public bool IsBirthdayNeeded(DateTime i_UserBirthday, BirthdayData i_Bdata)
         {
             bool result = true;
-            if (i_UserBirthday == DateTime.Today)
+            if ((DateTime.Now.Day == i_UserBirthday.Date.Day) && (DateTime.Now.Month == i_UserBirthday.Date.Month))
             {
                 i_Bdata.Date = FriendsBirthdays.BirthdaysDates.Today;
             }
-            else if (i_UserBirthday == DateTime.Today.AddDays(1))
+            else if ((DateTime.Now.AddDays(1).Day == i_UserBirthday.Date.Day) && (DateTime.Now.Month == i_UserBirthday.Date.Month))
             {
                 i_Bdata.Date = FriendsBirthdays.BirthdaysDates.Tomorrow;
             }

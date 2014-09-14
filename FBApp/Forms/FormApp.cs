@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using FBApp.Patterns;
-using FriendsBirthdays = FBApp.NewFeatures.FriendsBirthdays;
 
 namespace FBApp
 {
@@ -42,19 +41,19 @@ namespace FBApp
             StringBuilder todayBday = new StringBuilder();
             StringBuilder tomorrowBday = new StringBuilder();
             new Thread(initListBoxFriends).Start();
+            
             BirthdaysFilter relevantBirthdays = new BirthdaysFilter(new BirthdayStrategy());
             labelFriendStatus.MaximumSize = new Size(700, 0);
             labelFriendStatus.AutoSize = true;
-            
             foreach (BirthdayData bData in relevantBirthdays)
             {
-                if (bData.Date.Equals(FriendsBirthdays.BirthdaysDates.Today))
+                if (bData.Date == FriendsBirthdays.BirthdaysDates.Today)
                 {
                     todayBday.AppendLine(bData.Name);
                 }
                 else
                 {
-                    tomorrowBday.AppendLine(bData.Name);
+                    tomorrowBday.Append(bData.Name +", ");
                 }
             }
 

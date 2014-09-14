@@ -20,6 +20,10 @@ namespace FBApp.Patterns
             DateTime i_Date = new DateTime();
             foreach (User fbUser in FacebookAppLogic.Instance.LoggedinUser.Friends)
             {
+                if (fbUser.FirstName.Equals("Niv"))
+                {
+                    Console.WriteLine("ASD");
+                }
                 BirthdayData bData;
                 if (TryParseFriendBirthdayDateToSystemTime(ref i_Date, fbUser))
                 {
