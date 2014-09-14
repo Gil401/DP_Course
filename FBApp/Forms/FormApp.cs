@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
 using FBApp.Patterns;
+using FBApp.NewFeatures.MultiPostProxy;
 
 namespace FBApp
 {
@@ -78,9 +79,22 @@ namespace FBApp
             listBoxMusic.SelectionMode = SelectionMode.One;
         }
 
+        public void ShowMessageNoConnectionWhileSendingMultiGroupPosts()
+        {
+            MessageBox.Show("No connection");
+        }
+
+        public void ShowMessageSuccessfulySentMultiGroupPosts()
+        {
+            MessageBox.Show("Yes connection");
+        }
+
         private void initMultiGroupsPostFeature()
         {
             List<Group> groupsCollection = FacebookAppLogic.Instance.MultiGroupsPost.LoggedInUserGroups;
+            (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy).initDelegates(
+                new NoConnectionDelegate(ShowMessageNoConnectionWhileSendingMultiGroupPosts), new MessagesSentSuccesfulyDelegate(ShowMessageSuccessfulySentMultiGroupPosts));
+            
 
             try
             {

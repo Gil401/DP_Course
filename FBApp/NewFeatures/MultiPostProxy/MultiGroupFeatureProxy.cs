@@ -8,10 +8,18 @@ using FacebookWrapper.ObjectModel;
 
 namespace FBApp.NewFeatures.MultiPostProxy
 {
+    public delegate void NoConnectionDelegate();
+
+    public delegate void MessagesSentSuccesfulyDelegate();
+
     // MultiGroupProxy send the message to the desired groups on a diffrent thread.
     // If the connection is lost it will try again until it succeeds.
     public class MultiGroupFeatureProxy : IMultiGroupsPost
     {
+        private NoConnectionDelegate NoConnectionDelegate { get; set; }
+
+        private MessagesSentSuccesfulyDelegate MessageSentSuccefulyDelegate { get; set; }
+
         private MultipleGroupPostFeature MultiGroupPost { get; set; }
 
         private Queue<MultiPostObject> MultiPostObjectsCache { get; set; }
@@ -31,6 +39,12 @@ namespace FBApp.NewFeatures.MultiPostProxy
         {
             MultiGroupPost = new MultipleGroupPostFeature(i_LoggedInUserGroups);
             MultiPostObjectsCache = new Queue<MultiPostObject>();
+        }
+
+        public void initDelegates(NoConnectionDelegate i_NoConnectionDelegate, MessagesSentSuccesfulyDelegate i_MessageSentSuccefulyDelegate)
+        {
+            NoConnectionDelegate = i_NoConnectionDelegate;
+            MessageSentSuccefulyDelegate = i_MessageSentSuccefulyDelegate;
         }
 
         // Wrapper for the real Multi Group Post Feature function
@@ -54,6 +68,7 @@ namespace FBApp.NewFeatures.MultiPostProxy
             {
                 bool tryToSend = true;
                 MultiPostObject post = MultiPostObjectsCache.Dequeue();
+                bool firstTry = true;
 
                 do
                 {
@@ -65,9 +80,20 @@ namespace FBApp.NewFeatures.MultiPostProxy
                     catch (WebExceptionWrapper)
                     {
                         tryToSend = true;
+                        if(firstTry == true && NoConnectionDelegate != null)
+                        {
+                            NoConnectionDelegate.Invoke();
+                            firstTry = false;
+                        }
+                        
                     }
                 } 
                 while (tryToSend == true);
+            }
+
+            if (MessageSentSuccefulyDelegate != null)
+            {
+                MessageSentSuccefulyDelegate.Invoke();
             }
         }
 
