@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
 namespace FBApp.Patterns
@@ -22,7 +18,7 @@ namespace FBApp.Patterns
         public IEnumerator GetEnumerator()
         {
             DateTime i_Date = new DateTime();
-            foreach (User fbUser in FacebookAppLogic.Instance.m_UserFriends)
+            foreach (User fbUser in FacebookAppLogic.Instance.LoggedinUser.Friends)
             {
                 BirthdayData bData;
                 if (TryParseFriendBirthdayDateToSystemTime(ref i_Date, fbUser))

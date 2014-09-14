@@ -80,7 +80,7 @@ namespace FBApp
                 try
                 {
                     MusicFeature = new MusicYoutubePlaylistFeature();
-                    // MultiGroupsPost = new MultiGroupFeatureProxy(LoggedinUser.Groups);
+                    MultiGroupsPost = new MultiGroupFeatureProxy(LoggedinUser.Groups);
                     UserProfile = new FacebookUserProfile(LoggedinUser.Friends);
                     UserProfileCover = new FacebookUserProfileCover(LoggedinUser);
                     tryLoginResult = true;

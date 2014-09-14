@@ -45,7 +45,7 @@ namespace FBApp
             BirthdaysFilter relevantBirthdays = new BirthdaysFilter(new BirthdayStrategy());
             labelFriendStatus.MaximumSize = new Size(700, 0);
             labelFriendStatus.AutoSize = true;
-
+            
             foreach (BirthdayData bData in relevantBirthdays)
             {
                 if (bData.Date.Equals(FriendsBirthdays.BirthdaysDates.Today))
