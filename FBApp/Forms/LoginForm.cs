@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using FBApp.Forms;
 
 namespace FBApp
 {
-    public partial class FormLogin : Form
+    public partial class LoginForm : Form
     {   // $G$ CSS-016 (-5) Bad class name - The name of classes derived from Form should end with Form.
-        public FormLogin()
+        public LoginForm()
         {
             InitializeComponent();
         }

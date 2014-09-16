@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using FacebookWrapper.ObjectModel;
-using FBApp.Patterns;
 using FBApp.NewFeatures.MultiPostProxy;
+using FBApp.Patterns;
 
-namespace FBApp
+namespace FBApp.Forms
 {
     public partial class FacebookAppForm : Form
     {
         private const int k_LastItem = 0;
-
         public FacebookAppForm()
         {
             InitializeComponent();
@@ -81,12 +80,14 @@ namespace FBApp
 
         public void ShowMessageNoConnectionWhileSendingMultiGroupPosts()
         {
-            MessageBox.Show("No connection");
+            MessageBox.Show("Unable to send messages - No connection to network");
+            toolStripStatusLabel.Text = "Waiting for interent connection";
         }
 
         public void ShowMessageSuccessfulySentMultiGroupPosts()
         {
-            MessageBox.Show("Yes connection");
+            MessageBox.Show("Messages sent!");
+            toolStripStatusLabel.Text = "";
         }
 
         private void initMultiGroupsPostFeature()
@@ -268,6 +269,7 @@ Birthday: {3}",
 
         private void buttonPostToGroups_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel.Text = "Sending messages to chosen groups in the background...";
             string groupsPostText = textBoxGroupsPost.Text;
             List<string> groupsNames = new List<string>();
             List<Group> groups = new List<Group>();

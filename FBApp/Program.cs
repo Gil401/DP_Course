@@ -15,7 +15,7 @@ namespace FBApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             FacebookService.s_CollectionLimit = 2000;
-            Application.Run(new FormLogin());
+            Application.Run(new LoginForm());
         }
     }
 }

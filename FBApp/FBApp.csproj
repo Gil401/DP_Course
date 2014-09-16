@@ -104,17 +104,17 @@
     <Compile Include="NewFeatures\FriendsBirthdaysFacade\FriendsBirthdays.cs" />
     <Compile Include="NewFeatures\MultiPostProxy\MultiGroupFeatureProxy.cs" />
     <Compile Include="NewFeatures\MultiPostProxy\MultipleGroupPostFeature.cs" />
-    <Compile Include="Forms\FormApp.cs">
+    <Compile Include="Forms\AppForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormApp.Designer.cs">
-      <DependentUpon>FormApp.cs</DependentUpon>
+    <Compile Include="Forms\AppForm.Designer.cs">
+      <DependentUpon>AppForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormLogin.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NewFeatures\MultiPostProxy\IMultiGroupsPost.cs" />
     <Compile Include="NewFeatures\MultiPostProxy\MultiPostObject.cs" />
@@ -126,12 +126,12 @@
     <Compile Include="Patterns\IBirthdayFilterStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormApp.resx">
-      <DependentUpon>FormApp.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AppForm.resx">
+      <DependentUpon>AppForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Emey87-Social-Button-Facebook.ico" />
+    <None Include="Resources\loading.gif" />
     <None Include="Resources\Emey87-Social-Button-Facebook.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

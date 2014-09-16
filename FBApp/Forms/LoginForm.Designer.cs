@@ -1,6 +1,6 @@
 ﻿namespace FBApp
 {
-    public partial class FormLogin
+    public partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.WaitOnLoad = true;
             // 
-            // FormLogin
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +68,7 @@
             this.ClientSize = new System.Drawing.Size(425, 242);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "FormLogin";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome to the coolest Facebook App!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

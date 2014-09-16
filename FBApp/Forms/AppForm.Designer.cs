@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using FacebookWrapper.ObjectModel;
-
-namespace FBApp
+﻿namespace FBApp.Forms
 {
     public partial class FacebookAppForm
     {
@@ -74,6 +70,8 @@ namespace FBApp
             this.labelMyStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.facebookAppLogicBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControlProfile.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
             this.panelBirthdays.SuspendLayout();
@@ -90,6 +88,7 @@ namespace FBApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facebookAppLogicBindingSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlProfile
@@ -368,12 +367,25 @@ namespace FBApp
             // 
             this.facebookAppLogicBindingSource.DataSource = typeof(FBApp.FacebookAppLogic);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
+            // 
             // FacebookAppForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::FBApp.Properties.Resources.FBackground;
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBoxProfilePicture);
             this.Controls.Add(this.labelMyStatus);
             this.Controls.Add(this.labelName);
@@ -405,6 +417,8 @@ namespace FBApp
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfilePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.facebookAppLogicBindingSource)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,5 +465,7 @@ namespace FBApp
         private System.Windows.Forms.BindingSource facebookAppLogicBindingSource;
         private System.Windows.Forms.ListBox listBoxMusic;
         private System.Windows.Forms.BindingSource pageBindingSource;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
