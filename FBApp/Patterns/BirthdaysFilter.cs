@@ -7,12 +7,11 @@ namespace FBApp.Patterns
 {
     public class BirthdaysFilter : IEnumerable
     {
-        private BirthdayData m_BirthdayData;
-        private IBirthdayFilterStrategy m_Strategy;
+        private readonly IBirthdayFilterStrategy rm_Strategy = null;
 
         public BirthdaysFilter(IBirthdayFilterStrategy i_Strategy)
         {
-            m_Strategy = i_Strategy;
+            rm_Strategy = i_Strategy;
         }
 
         public IEnumerator GetEnumerator()
@@ -21,13 +20,14 @@ namespace FBApp.Patterns
 
             foreach (User fbUser in FacebookAppLogic.Instance.LoggedinUser.Friends)
             {
+                BirthdayData bData;
                 if (TryParseFriendBirthdayDateToSystemTime(ref i_Date, fbUser))
                 {
-                    m_BirthdayData = new BirthdayData();
-                    if (m_Strategy.IsBirthdayNeeded(i_Date, m_BirthdayData))
+                    bData = new BirthdayData();
+                    if (rm_Strategy.IsBirthdayNeeded(i_Date, bData))
                     {
-                        m_BirthdayData.Name = fbUser.Name;
-                        yield return (m_BirthdayData);
+                        bData.Name = fbUser.Name;
+                        yield return bData;
                     }
                 }
             }

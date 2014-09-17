@@ -1,8 +1,8 @@
 ﻿using System;
 
 namespace FBApp.Patterns
-{
-    class BirthdayStrategy : IBirthdayFilterStrategy
+{   
+    public class BirthdayStrategy : IBirthdayFilterStrategy
     {
         public bool IsBirthdayNeeded(DateTime i_UserBirthday, BirthdayData i_Bdata)
         {
@@ -24,4 +24,3 @@ namespace FBApp.Patterns
         }
     }
 }
-

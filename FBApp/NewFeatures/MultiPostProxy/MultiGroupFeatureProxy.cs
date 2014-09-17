@@ -80,7 +80,6 @@ namespace FBApp.NewFeatures.MultiPostProxy
                             MessageSentStatusDelegate.Invoke("Unable to send messages - No connection to network", "Waiting for interent connection");
                             firstTry = false;
                         }
-                        
                     }
                 } 
                 while (tryToSend == true);

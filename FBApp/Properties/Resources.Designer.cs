@@ -141,6 +141,45 @@ namespace FBApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sending messages to chosen groups in the background....
+        /// </summary>
+        internal static string FacebookAppForm_buttonPostToGroups_Click_Sending_messages_to_chosen_groups_in_the_background___ {
+            get {
+                return ResourceManager.GetString("FacebookAppForm_buttonPostToGroups_Click_Sending_messages_to_chosen_groups_in_the" +
+                        "_background___", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to send messages - No connection to network.
+        /// </summary>
+        internal static string FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Unable_to_send_messages___No_connection_to_network {
+            get {
+                return ResourceManager.GetString("FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Unable_to_send" +
+                        "_messages___No_connection_to_network", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting for interent connection.
+        /// </summary>
+        internal static string FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Waiting_for_interent_connection {
+            get {
+                return ResourceManager.GetString("FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Waiting_for_in" +
+                        "terent_connection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages sent!.
+        /// </summary>
+        internal static string FacebookAppForm_ShowMessageSuccessfulySentMultiGroupPosts_Messages_sent_ {
+            get {
+                return ResourceManager.GetString("FacebookAppForm_ShowMessageSuccessfulySentMultiGroupPosts_Messages_sent_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap fb {
