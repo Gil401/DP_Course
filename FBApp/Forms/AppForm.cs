@@ -82,21 +82,16 @@ namespace FBApp.Forms
 
         public void ShowMessageMultiGroupPostStatus(string i_DialogBoxMessage, string i_StatusBarMessage)
         {
-            MessageBox.Show(Resources.FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Unable_to_send_messages___No_connection_to_network);
-            toolStripStatusLabel.Text = Resources.FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Waiting_for_interent_connection;
+            MessageBox.Show(i_DialogBoxMessage);
+            toolStripStatusLabel.Text = i_StatusBarMessage;
         }
-
-        public void ShowMessageSuccessfulySentMultiGroupPosts()
-        {
-            MessageBox.Show(Resources.FacebookAppForm_ShowMessageSuccessfulySentMultiGroupPosts_Messages_sent_);
-            toolStripStatusLabel.Text = string.Empty;
-        }
-
+        
         private void initMultiGroupsPostFeature()
         {
             List<Group> groupsCollection = FacebookAppLogic.Instance.MultiGroupsPost.LoggedInUserGroups;
-            (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy).initDelegates(
-                new NoConnectionDelegate(ShowMessageNoConnectionWhileSendingMultiGroupPosts), new MessagesSentSuccesfulyDelegate(ShowMessageSuccessfulySentMultiGroupPosts));
+            MultiGroupFeatureProxy multiPostProxy = (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy);
+            multiPostProxy.initDelegates(new MessageSentStatusDelegate(ShowMessageMultiGroupPostStatus));
+
             try
             {
                 if (!groupsBox.InvokeRequired)

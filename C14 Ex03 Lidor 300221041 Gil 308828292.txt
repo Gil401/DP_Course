@@ -1,8 +1,8 @@
 ==========================Exercise Checking Report==========================
-Exercise No...........: 2
+Exercise No...........: 3
 First Student Details.: 300221041 - Lidor Politzer
 Second Student Details: 308828292 - Gil Brudner
-Delivery Date.........: 28 - August - 2014
+Delivery Date.........: 17 - September - 2014
 Delivered In Delay....: No
 Delay Reason..........: 
 Comments..............: Please make sure that you run the latest update of Visual Studio 2013
