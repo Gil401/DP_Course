@@ -41,8 +41,8 @@ namespace FBApp.Forms
             StringBuilder todayBday = new StringBuilder();
             StringBuilder tomorrowBday = new StringBuilder();
             new Thread(initListBoxFriends).Start();
-            
             BirthdaysFilter relevantBirthdays = new BirthdaysFilter(new BirthdayStrategy());
+            
             labelFriendStatus.MaximumSize = new Size(700, 0);
             labelFriendStatus.AutoSize = true;
             foreach (BirthdayData bData in relevantBirthdays)
@@ -78,25 +78,18 @@ namespace FBApp.Forms
             listBoxMusic.SelectionMode = SelectionMode.One;
         }
 
-        public void ShowMessageNoConnectionWhileSendingMultiGroupPosts()
+        public void ShowMessageMultiGroupPostStatus(string i_DialogBoxMessage, string i_StatusBarMessage)
         {
-            MessageBox.Show("Unable to send messages - No connection to network");
-            toolStripStatusLabel.Text = "Waiting for interent connection";
+            MessageBox.Show(i_DialogBoxMessage);
+            toolStripStatusLabel.Text = i_StatusBarMessage;
         }
-
-        public void ShowMessageSuccessfulySentMultiGroupPosts()
-        {
-            MessageBox.Show("Messages sent!");
-            toolStripStatusLabel.Text = "";
-        }
-
+        
         private void initMultiGroupsPostFeature()
         {
             List<Group> groupsCollection = FacebookAppLogic.Instance.MultiGroupsPost.LoggedInUserGroups;
-            (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy).initDelegates(
-                new NoConnectionDelegate(ShowMessageNoConnectionWhileSendingMultiGroupPosts), new MessagesSentSuccesfulyDelegate(ShowMessageSuccessfulySentMultiGroupPosts));
+            MultiGroupFeatureProxy multiPostFeature = (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy);
             
-
+            multiPostFeature.initDelegates(new MessageSentStatusDelegate(ShowMessageMultiGroupPostStatus));
             try
             {
                 if (!groupsBox.InvokeRequired)

@@ -8,17 +8,13 @@ using FacebookWrapper.ObjectModel;
 
 namespace FBApp.NewFeatures.MultiPostProxy
 {
-    public delegate void NoConnectionDelegate();
-
-    public delegate void MessagesSentSuccesfulyDelegate();
+    public delegate void MessageSentStatusDelegate(string i_MessageOne, string i_MessageTwo);
 
     // MultiGroupProxy send the message to the desired groups on a diffrent thread.
     // If the connection is lost it will try again until it succeeds.
     public class MultiGroupFeatureProxy : IMultiGroupsPost
     {
-        private NoConnectionDelegate NoConnectionDelegate { get; set; }
-
-        private MessagesSentSuccesfulyDelegate MessageSentSuccefulyDelegate { get; set; }
+        private MessageSentStatusDelegate MessageSentStatusDelegate { get; set; }
 
         private MultipleGroupPostFeature MultiGroupPost { get; set; }
 
@@ -41,10 +37,9 @@ namespace FBApp.NewFeatures.MultiPostProxy
             MultiPostObjectsCache = new Queue<MultiPostObject>();
         }
 
-        public void initDelegates(NoConnectionDelegate i_NoConnectionDelegate, MessagesSentSuccesfulyDelegate i_MessageSentSuccefulyDelegate)
+        public void initDelegates(MessageSentStatusDelegate i_MessageSentSuccefulyDelegate)
         {
-            NoConnectionDelegate = i_NoConnectionDelegate;
-            MessageSentSuccefulyDelegate = i_MessageSentSuccefulyDelegate;
+            MessageSentStatusDelegate = i_MessageSentSuccefulyDelegate;
         }
 
         // Wrapper for the real Multi Group Post Feature function
@@ -80,9 +75,9 @@ namespace FBApp.NewFeatures.MultiPostProxy
                     catch (WebExceptionWrapper)
                     {
                         tryToSend = true;
-                        if(firstTry == true && NoConnectionDelegate != null)
+                        if(firstTry == true && MessageSentStatusDelegate != null)
                         {
-                            NoConnectionDelegate.Invoke();
+                            MessageSentStatusDelegate.Invoke("Unable to send messages - No connection to network", "Waiting for interent connection");
                             firstTry = false;
                         }
                         
@@ -91,9 +86,9 @@ namespace FBApp.NewFeatures.MultiPostProxy
                 while (tryToSend == true);
             }
 
-            if (MessageSentSuccefulyDelegate != null)
+            if (MessageSentStatusDelegate != null)
             {
-                MessageSentSuccefulyDelegate.Invoke();
+                MessageSentStatusDelegate.Invoke("Messages sent!", "");
             }
         }
 
