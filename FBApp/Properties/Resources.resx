@@ -157,4 +157,16 @@
   <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Unable_to_send_messages___No_connection_to_network" xml:space="preserve">
+    <value>Unable to send messages - No connection to network</value>
+  </data>
+  <data name="FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Waiting_for_interent_connection" xml:space="preserve">
+    <value>Waiting for interent connection</value>
+  </data>
+  <data name="FacebookAppForm_ShowMessageSuccessfulySentMultiGroupPosts_Messages_sent_" xml:space="preserve">
+    <value>Messages sent!</value>
+  </data>
+  <data name="FacebookAppForm_buttonPostToGroups_Click_Sending_messages_to_chosen_groups_in_the_background___" xml:space="preserve">
+    <value>Sending messages to chosen groups in the background...</value>
+  </data>
 </root>

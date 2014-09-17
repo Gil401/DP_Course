@@ -85,7 +85,6 @@ namespace FBApp.NewFeatures.MultiPostProxy
                             NoConnectionDelegate.Invoke();
                             firstTry = false;
                         }
-                        
                     }
                 } 
                 while (tryToSend == true);

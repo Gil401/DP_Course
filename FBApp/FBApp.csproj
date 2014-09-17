@@ -139,6 +139,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram5.cd" />
+    <None Include="ClassDiagram6.cd" />
     <None Include="FacebookAppLogic.datasource" />
     <None Include="FacebookWrapper.ObjectModel.FriendList.datasource" />
     <None Include="FacebookWrapper.ObjectModel.Page1.datasource" />

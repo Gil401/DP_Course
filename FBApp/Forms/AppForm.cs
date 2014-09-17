@@ -7,12 +7,14 @@ using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FBApp.NewFeatures.MultiPostProxy;
 using FBApp.Patterns;
+using FBApp.Properties;
 
 namespace FBApp.Forms
 {
     public partial class FacebookAppForm : Form
     {
         private const int k_LastItem = 0;
+
         public FacebookAppForm()
         {
             InitializeComponent();
@@ -53,7 +55,7 @@ namespace FBApp.Forms
                 }
                 else
                 {
-                    tomorrowBday.Append(bData.Name +", ");
+                    tomorrowBday.Append(bData.Name + ", ");
                 }
             }
 
@@ -80,14 +82,14 @@ namespace FBApp.Forms
 
         public void ShowMessageNoConnectionWhileSendingMultiGroupPosts()
         {
-            MessageBox.Show("Unable to send messages - No connection to network");
-            toolStripStatusLabel.Text = "Waiting for interent connection";
+            MessageBox.Show(Resources.FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Unable_to_send_messages___No_connection_to_network);
+            toolStripStatusLabel.Text = Resources.FacebookAppForm_ShowMessageNoConnectionWhileSendingMultiGroupPosts_Waiting_for_interent_connection;
         }
 
         public void ShowMessageSuccessfulySentMultiGroupPosts()
         {
-            MessageBox.Show("Messages sent!");
-            toolStripStatusLabel.Text = "";
+            MessageBox.Show(Resources.FacebookAppForm_ShowMessageSuccessfulySentMultiGroupPosts_Messages_sent_);
+            toolStripStatusLabel.Text = string.Empty;
         }
 
         private void initMultiGroupsPostFeature()
@@ -95,8 +97,6 @@ namespace FBApp.Forms
             List<Group> groupsCollection = FacebookAppLogic.Instance.MultiGroupsPost.LoggedInUserGroups;
             (FacebookAppLogic.Instance.MultiGroupsPost as MultiGroupFeatureProxy).initDelegates(
                 new NoConnectionDelegate(ShowMessageNoConnectionWhileSendingMultiGroupPosts), new MessagesSentSuccesfulyDelegate(ShowMessageSuccessfulySentMultiGroupPosts));
-            
-
             try
             {
                 if (!groupsBox.InvokeRequired)
@@ -118,17 +118,8 @@ namespace FBApp.Forms
 
         private string setBirthdaysMessage(StringBuilder i_Birthdays, string i_BirthdayDateMessage)
         {
-            string birthdays;
-
-            if (i_Birthdays.Length > 0)
-            {
-                birthdays = string.Format(i_BirthdayDateMessage + Environment.NewLine + i_Birthdays.ToString());
-            }
-            else
-            {
-                birthdays = string.Format("{0} {1} No birthdays =[", i_BirthdayDateMessage, Environment.NewLine);
-            }
-
+            string birthdays = i_Birthdays.Length > 0 ? 
+                string.Format(i_BirthdayDateMessage + Environment.NewLine + i_Birthdays.ToString()) : string.Format("{0} {1} No birthdays =[", i_BirthdayDateMessage, Environment.NewLine);
             return birthdays;
         }
 
@@ -183,7 +174,7 @@ namespace FBApp.Forms
 
             if (listBoxFriends.InvokeRequired)
             {
-                user = (User)listBoxFriends.Invoke(new Func<User>(() => fetchSelectedUser()));
+                user = (User)listBoxFriends.Invoke(new Func<User>(fetchSelectedUser));
             }
             else
             {
@@ -243,14 +234,7 @@ Birthday: {3}",
         {
             string friendStatus;
 
-            if (selectedUser.Statuses.Count > 0)
-            {
-                friendStatus = selectedUser.Statuses[k_LastItem].Message;
-            }
-            else
-            {
-                friendStatus = string.Empty;
-            }
+            friendStatus = selectedUser.Statuses.Count > 0 ? selectedUser.Statuses[k_LastItem].Message : string.Empty;
 
             if (!labelFriendStatus.InvokeRequired)
             {
@@ -269,7 +253,7 @@ Birthday: {3}",
 
         private void buttonPostToGroups_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = "Sending messages to chosen groups in the background...";
+            toolStripStatusLabel.Text = Resources.FacebookAppForm_buttonPostToGroups_Click_Sending_messages_to_chosen_groups_in_the_background___;
             string groupsPostText = textBoxGroupsPost.Text;
             List<string> groupsNames = new List<string>();
             List<Group> groups = new List<Group>();

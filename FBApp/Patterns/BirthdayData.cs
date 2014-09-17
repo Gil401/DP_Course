@@ -5,7 +5,5 @@
         public FriendsBirthdays.BirthdaysDates Date { get; set; }
 
         public string Name { get; set; }
-
-
     }
 }
